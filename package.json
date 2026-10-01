@@ -2,7 +2,6 @@
   "name": "tutors_public",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
   "dependencies": {
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.126",
