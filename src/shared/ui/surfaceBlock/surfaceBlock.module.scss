@@ -1,0 +1,12 @@
+.surfaceBlock {
+  border: 1px solid var(--surface-border);
+  border-radius: var(--surface-radius);
+  padding: var(--surface-padding);
+  background: var(--surface-bg);
+  box-shadow: var(--surface-shadow);
+}
+
+.compact {
+  border-radius: var(--surface-radius-small);
+  padding: var(--surface-padding-small);
+}

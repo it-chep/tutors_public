@@ -1,0 +1,19 @@
+.loaderSpinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--blue);
+  --mask: conic-gradient(#0000 20%, #000), linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  -webkit-mask-composite: source-out;
+  mask-composite: subtract;
+  animation: rotation 1s infinite linear;
+}
+
+@keyframes rotation {
+  to { transform: rotate(1turn); }
+}

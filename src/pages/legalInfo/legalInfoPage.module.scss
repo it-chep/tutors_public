@@ -1,0 +1,65 @@
+.page {
+  display: grid;
+  gap: 24px;
+}
+
+.heading {
+  display: grid;
+  gap: 8px;
+
+  h1 {
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.15;
+  }
+
+  > p:last-child {
+    color: var(--gray-medium);
+    line-height: 1.5;
+  }
+}
+
+.card {
+  overflow: hidden;
+  padding: 0;
+}
+
+.list {
+  display: grid;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: minmax(180px, 36%) 1fr;
+  gap: 24px;
+  padding: 20px 24px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--gray-border);
+  }
+
+  dt {
+    color: var(--gray-medium);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  dd {
+    overflow-wrap: anywhere;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  a {
+    color: var(--blue-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+@media (max-width: 560px) {
+  .item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 18px;
+  }
+}
