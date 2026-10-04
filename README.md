@@ -17,7 +17,7 @@ npm install
 npm start
 ```
 
-В режиме разработки React перенаправляет запросы `/api/*` на `BACKEND_URL` (по умолчанию `http://localhost:8080`). В production запросы остаются относительными и идут на текущий origin.
+В режиме разработки React перенаправляет запросы `/api/*` на `BACKEND_URL` (по умолчанию `http://localhost:8080`). В production `REACT_APP_BACKEND_URL` задаёт origin публичного API; если он не указан, запросы остаются относительными и идут на текущий origin.
 
 Запросы передают параметр `hostname`: в обычном режиме это текущий домен из адресной строки, а при `REACT_APP_DEBUG=true` — значение `REACT_APP_CLIENT_DOMAIN` из `.env`.
 

@@ -6,6 +6,16 @@ const browserHostname = (): string => (
   typeof window === 'undefined' ? '' : window.location.hostname
 );
 
+const apiOrigin = (): string => {
+  const configuredOrigin = process.env.REACT_APP_BACKEND_URL?.trim();
+
+  if (configuredOrigin) {
+    return configuredOrigin.replace(/\/+$/, '');
+  }
+
+  return window.location.origin;
+};
+
 /**
  * В отладочной среде backend-контур выбирается явно через переменную окружения.
  * Во всех остальных случаях юридическая информация загружается для домена,
@@ -18,19 +28,20 @@ export const clientDomain = (): string => {
 };
 
 export const publicEndpoint = (path: string): string => {
-  const url = new URL(path, window.location.origin);
+  const url = new URL(path, apiOrigin());
   const hostname = clientDomain();
 
   if (hostname) {
     url.searchParams.set('hostname', hostname);
   }
 
-  return `${url.pathname}${url.search}`;
+  return url.toString();
 };
 
 /**
- * Публичные запросы намеренно используют относительные URL и не передают JWT,
- * adminId или другие сведения об административном контуре.
+ * Публичные запросы не передают JWT, adminId или другие сведения об
+ * административном контуре. REACT_APP_BACKEND_URL направляет запросы
+ * в отдельный backend origin в production.
  */
 export const publicGet = async <T>(url: string): Promise<T> => {
   const endpoint = publicEndpoint(url);
